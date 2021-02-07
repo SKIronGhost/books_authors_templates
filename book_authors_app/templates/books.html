@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+</head>
+<body>
+<a role="button" class="btn btn-secondary m-2" href="/">Home</a>
+    <div class="container-fluid row p-5">
+        <div class="container col-6">
+            <h1>Add Book</h1>
+            <form action="/new_book" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control form-control-lg" name="title" type="text" placeholder="Enter book title" id="title">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea class="form-control form-control-lg" name="desc" type="textarea" placeholder="Enter description of the book" id="desc" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Add</button>
+            </form>
+        </div>
+        <div class="container col-6">
+            <table class="table table-hover table-dark">
+              <thead class="bg-primary">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for book in books %}
+                <tr>
+                  <th scope="row">{{ book.id }}</th>
+                  <td>{{book.title}}</td>
+                  <td><a href="books/{{ book.id }}">View</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

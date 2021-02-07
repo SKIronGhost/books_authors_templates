@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+</head>
+<body>
+<a role="button" class="btn btn-secondary m-2" href="/authors">Go Back</a>
+    <div class="container-fluid p-5">
+        <h1 class="display-3">{{ author.first_name }}  {{ author.last_name }}</h1>
+        <p class="lead">ID: {{ author.id }}</p>
+        <p class="lead">Notes: {{ author.notes }}</p>
+    </div>
+    <div class="container-fluid p-4">
+        <p class="lead">Books:</p>
+        <ul>
+            {% for book in author.books.values %}
+                <li>{{ book.title }}</li>
+            {% endfor %}
+        </ul>
+        <form action="{{ author.id }}/add_book" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="book_select">Select an author</label>
+                <select class="form-control" id="book_select" name="book_choice">
+                    {% for book in option %}
+                        <option>{{ book.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success mb-2">Add</button>
+        </form>
+    </div>
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

@@ -1,0 +1,329 @@
+Microsoft Windows [Version 10.0.19042.746]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack>cd django\django_orm
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm>django-admin startproject book_authors_proj
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm>cd book_authors_proj
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>django-admin startapp book_authors_app
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py makemigrations
+Traceback (most recent call last):
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj\manage.py", line 22, in <module>
+    main()
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj\manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\core\management\__init__.py", line 401, in execute_from_comm
+and_line
+    utility.execute()
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\core\management\__init__.py", line 377, in execute
+    django.setup()
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\apps\registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\apps\config.py", line 90, in create
+    module = import_module(entry)
+  File "C:\Users\eddie\AppData\Local\Programs\Python\Python39\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'books_author_app'
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py makemigrations
+Migrations for 'book_authors_app':
+  book_authors_app\migrations\0001_initial.py
+    - Create model Book
+    - Create model Author
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py mmigrate
+Unknown command: 'mmigrate'. Did you mean migrate?
+Type 'manage.py help' for usage.
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, book_authors_app, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying book_authors_app.0001_initial... OK
+  Applying sessions.0001_initial... OK
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py shell
+Python 3.9.1 (tags/v3.9.1:1e5d33e, Dec  7 2020, 17:08:21) [MSC v.1927 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from books_authors_app.models import Book, Author
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'books_authors_app'
+>>> from book_authors_app.models import Book, Author
+>>> Book.objects.create(title="C Sharp", desc="This is a book about a programming lnguage")
+<Book: Book object (1)>
+>>> Book.objects.create(title="Java", desc="This is a book about a programming lnguage")
+<Book: Book object (2)>
+>>> Book.objects.create(title="Python", desc="This is a book about a programming lnguage")
+<Book: Book object (3)>
+>>> Book.objects.create(title="PHP", desc="This is a book about a programming lnguage")
+<Book: Book object (4)>
+>>> Book.objects.create(title="Ruby", desc="This is a book about a programming lnguage")
+<Book: Book object (5)>
+>>> Author.objects.create(first_name="Jane", last_name="Austen")
+<Author: Author object (1)>
+>>> Author.objects.create(first_name="Emily", last_name="Dickinson")
+<Author: Author object (2)>
+>>> Author.objects.create(first_name="Fyodor", last_name="Dostoevksy")
+<Author: Author object (3)>
+>>> Author.objects.create(first_name="William", last_name="Shakespeare")
+<Author: Author object (4)>
+>>> Author.objects.create(first_name="Lao", last_name="Tzu")
+<Author: Author object (5)>
+>>> exit()
+
+KeyboardInterrupt
+>>> exit()
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py makemigrations
+You are trying to add a non-nullable field 'notes' to author without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> ""
+Migrations for 'book_authors_app':
+  book_authors_app\migrations\0002_author_notes.py
+    - Add field notes to author
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py shell
+Python 3.9.1 (tags/v3.9.1:1e5d33e, Dec  7 2020, 17:08:21) [MSC v.1927 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> c_sharp = Book.objects.get(id = 1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Book' is not defined
+>>> from book_authors_app.models import Book, Author
+>>> c_sharp = Book.objects.get(id = 1)
+>>> c_sharp.title="C #"
+>>> c_sharp.save()
+>>> Book.objects.all().values()
+<QuerySet [{'id': 1, 'title': 'C #', 'desc': 'This is a book about a programming lnguage', 'created_at': datetime.datetime(2021, 2, 6, 23, 57, 59, 609610, tzinfo=<UT
+C>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 3, 28, 861015, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'This is a book about a programming lnguage', '
+created_at': datetime.datetime(2021, 2, 6, 23, 58, 8, 655096, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 6, 23, 58, 8, 655096, tzinfo=<UTC>)}, {'id': 3,
+ 'title': 'Python', 'desc': 'This is a book about a programming lnguage', 'created_at': datetime.datetime(2021, 2, 6, 23, 58, 17, 792375, tzinfo=<UTC>), 'updated_at'
+: datetime.datetime(2021, 2, 6, 23, 58, 17, 792375, tzinfo=<UTC>)}, {'id': 4, 'title': 'PHP', 'desc': 'This is a book about a programming lnguage', 'created_at': dat
+etime.datetime(2021, 2, 6, 23, 58, 24, 549474, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 6, 23, 58, 24, 549474, tzinfo=<UTC>)}, {'id': 5, 'title': 'Rub
+y', 'desc': 'This is a book about a programming lnguage', 'created_at': datetime.datetime(2021, 2, 6, 23, 58, 31, 605164, tzinfo=<UTC>), 'updated_at': datetime.datet
+ime(2021, 2, 6, 23, 58, 31, 605164, tzinfo=<UTC>)}]>
+>>> java = Book.objects.get(id = 2)
+>>> python = Book.objects.get(id = 3)
+>>> php = Book.objects.get(id = 4)
+>>> ruby = Book.objects.get(id = 5)
+>>> Author.objects.all().values()
+Traceback (most recent call last):
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\sqlite3\base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such column: book_authors_app_author.notes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\query.py", line 263, in __repr__
+    data = list(self[:REPR_OUTPUT_SIZE + 1])
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\query.py", line 269, in __len__
+    self._fetch_all()
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\query.py", line 1308, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\query.py", line 111, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\sql\compiler.py", line 1108, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\sql\compiler.py", line 1156, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\sqlite3\base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such column: book_authors_app_author.notes
+>>> author_4=Auhor.objects.get(id=4)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Auhor' is not defined
+>>> author_4=Author.objects.get(id=4)
+Traceback (most recent call last):
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\sqlite3\base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such column: book_authors_app_author.notes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\query.py", line 425, in get
+    num = len(clone)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\query.py", line 269, in __len__
+    self._fetch_all()
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\query.py", line 1308, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\models\sql\compiler.py", line 1156, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Development\Coding_Dojo\Tasks\python_stack\my_environments\DjPy3PSQL\lib\site-packages\django\db\backends\sqlite3\base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such column: book_authors_app_author.notes
+>>> exit()
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, book_authors_app, contenttypes, sessions
+Running migrations:
+  Applying book_authors_app.0002_author_notes... OK
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>python manage.py shell
+Python 3.9.1 (tags/v3.9.1:1e5d33e, Dec  7 2020, 17:08:21) [MSC v.1927 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from book_authors_app.models import Book, Author
+>>> Author.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Jane', 'last_name': 'Austen', 'notes': '', 'created_at': datetime.datetime(2021, 2, 6, 23, 59, 23, 520626, tzinfo=<UTC>), 'update
+d_at': datetime.datetime(2021, 2, 6, 23, 59, 23, 520626, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Emily', 'last_name': 'Dickinson', 'notes': '', 'created_at': dateti
+me.datetime(2021, 2, 6, 23, 59, 41, 557737, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 6, 23, 59, 41, 557737, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'F
+yodor', 'last_name': 'Dostoevksy', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 2, 505868, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2,
+7, 0, 0, 2, 505868, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'William', 'last_name': 'Shakespeare', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 18,
+ 850541, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 0, 18, 850541, tzinfo=<UTC>)}, {'id': 5, 'first_name': 'Lao', 'last_name': 'Tzu', 'notes': '',
+ 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 30, 526825, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 0, 30, 526825, tzinfo=<UTC>)}]>
+>>> author_4=Author.objects.get(id=4)
+>>> author_4.first_name = "Bill"
+>>> author_4.save()
+>>> Author.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Jane', 'last_name': 'Austen', 'notes': '', 'created_at': datetime.datetime(2021, 2, 6, 23, 59, 23, 520626, tzinfo=<UTC>), 'update
+d_at': datetime.datetime(2021, 2, 6, 23, 59, 23, 520626, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Emily', 'last_name': 'Dickinson', 'notes': '', 'created_at': dateti
+me.datetime(2021, 2, 6, 23, 59, 41, 557737, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 6, 23, 59, 41, 557737, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'F
+yodor', 'last_name': 'Dostoevksy', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 2, 505868, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2,
+7, 0, 0, 2, 505868, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 18, 85
+0541, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 9, 29, 940978, tzinfo=<UTC>)}, {'id': 5, 'first_name': 'Lao', 'last_name': 'Tzu', 'notes': '', 'c
+reated_at': datetime.datetime(2021, 2, 7, 0, 0, 30, 526825, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 0, 30, 526825, tzinfo=<UTC>)}]>
+>>> author_1=Author.objects.get(id=1)
+>>> author_2=Author.objects.get(id=2)
+>>> author_3=Author.objects.get(id=3)
+>>> author_5=Author.objects.get(id=5)
+>>> author_1.books.add(c_sharp, java)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'c_sharp' is not defined
+>>> author_1.books.add(java)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'java' is not defined
+>>> print(c_sharp)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'c_sharp' is not defined
+>>> Book.objects.all().values()
+<QuerySet [{'id': 1, 'title': 'C #', 'desc': 'This is a book about a programming lnguage', 'created_at': datetime.datetime(2021, 2, 6, 23, 57, 59, 609610, tzinfo=<UT
+C>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 3, 28, 861015, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'This is a book about a programming lnguage', '
+created_at': datetime.datetime(2021, 2, 6, 23, 58, 8, 655096, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 6, 23, 58, 8, 655096, tzinfo=<UTC>)}, {'id': 3,
+ 'title': 'Python', 'desc': 'This is a book about a programming lnguage', 'created_at': datetime.datetime(2021, 2, 6, 23, 58, 17, 792375, tzinfo=<UTC>), 'updated_at'
+: datetime.datetime(2021, 2, 6, 23, 58, 17, 792375, tzinfo=<UTC>)}, {'id': 4, 'title': 'PHP', 'desc': 'This is a book about a programming lnguage', 'created_at': dat
+etime.datetime(2021, 2, 6, 23, 58, 24, 549474, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 6, 23, 58, 24, 549474, tzinfo=<UTC>)}, {'id': 5, 'title': 'Rub
+y', 'desc': 'This is a book about a programming lnguage', 'created_at': datetime.datetime(2021, 2, 6, 23, 58, 31, 605164, tzinfo=<UTC>), 'updated_at': datetime.datet
+ime(2021, 2, 6, 23, 58, 31, 605164, tzinfo=<UTC>)}]>
+>>> c_sharp = Book.objects.get(id = 1)
+>>> java = Book.objects.get(id = 2)
+>>> python = Book.objects.get(id = 3)
+>>> php = Book.objects.get(id = 4)
+>>> ruby = Book.objects.get(id = 5)
+>>> author_1.books.add(c_sharp, java)
+>>> author_2.books.add(c_sharp, java, python)
+>>> author_3.books.add(c_sharp, java, python, php)
+>>> author_4.books.add(c_sharp, java, python, php, ruby)
+>>> python.publishers
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Book' object has no attribute 'publishers'
+>>> python.authors
+<django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x000001F2F4F64D60>
+>>> python.authors.values()
+<QuerySet [{'id': 2, 'first_name': 'Emily', 'last_name': 'Dickinson', 'notes': '', 'created_at': datetime.datetime(2021, 2, 6, 23, 59, 41, 557737, tzinfo=<UTC>), 'up
+dated_at': datetime.datetime(2021, 2, 6, 23, 59, 41, 557737, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Fyodor', 'last_name': 'Dostoevksy', 'notes': '', 'created_at':
+datetime.datetime(2021, 2, 7, 0, 0, 2, 505868, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 0, 2, 505868, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'B
+ill', 'last_name': 'Shakespeare', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 18, 850541, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2,
+7, 0, 9, 29, 940978, tzinfo=<UTC>)}]>
+>>> author_2.delete()
+(4, {'book_authors_app.Author_books': 3, 'book_authors_app.Author': 1})
+>>> python.authors.values()
+<QuerySet [{'id': 3, 'first_name': 'Fyodor', 'last_name': 'Dostoevksy', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 2, 505868, tzinfo=<UTC>), 'upd
+ated_at': datetime.datetime(2021, 2, 7, 0, 0, 2, 505868, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'notes': '', 'created_at': datet
+ime.datetime(2021, 2, 7, 0, 0, 18, 850541, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 9, 29, 940978, tzinfo=<UTC>)}]>
+>>> java.authors.add(author_5)
+>>> java.authors.values()
+<QuerySet [{'id': 1, 'first_name': 'Jane', 'last_name': 'Austen', 'notes': '', 'created_at': datetime.datetime(2021, 2, 6, 23, 59, 23, 520626, tzinfo=<UTC>), 'update
+d_at': datetime.datetime(2021, 2, 6, 23, 59, 23, 520626, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Fyodor', 'last_name': 'Dostoevksy', 'notes': '', 'created_at': date
+time.datetime(2021, 2, 7, 0, 0, 2, 505868, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 0, 2, 505868, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Bill'
+, 'last_name': 'Shakespeare', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 18, 850541, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0
+, 9, 29, 940978, tzinfo=<UTC>)}, {'id': 5, 'first_name': 'Lao', 'last_name': 'Tzu', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 30, 526825, tzinfo
+=<UTC>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 0, 30, 526825, tzinfo=<UTC>)}]>
+>>> author_3.books.values()
+<QuerySet [{'id': 1, 'title': 'C #', 'desc': 'This is a book about a programming lnguage', 'created_at': datetime.datetime(2021, 2, 6, 23, 57, 59, 609610, tzinfo=<UT
+C>), 'updated_at': datetime.datetime(2021, 2, 7, 0, 3, 28, 861015, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'This is a book about a programming lnguage', '
+created_at': datetime.datetime(2021, 2, 6, 23, 58, 8, 655096, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 6, 23, 58, 8, 655096, tzinfo=<UTC>)}, {'id': 3,
+ 'title': 'Python', 'desc': 'This is a book about a programming lnguage', 'created_at': datetime.datetime(2021, 2, 6, 23, 58, 17, 792375, tzinfo=<UTC>), 'updated_at'
+: datetime.datetime(2021, 2, 6, 23, 58, 17, 792375, tzinfo=<UTC>)}, {'id': 4, 'title': 'PHP', 'desc': 'This is a book about a programming lnguage', 'created_at': dat
+etime.datetime(2021, 2, 6, 23, 58, 24, 549474, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 2, 6, 23, 58, 24, 549474, tzinfo=<UTC>)}]>
+>>> ruby.authors.values()
+<QuerySet [{'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'notes': '', 'created_at': datetime.datetime(2021, 2, 7, 0, 0, 18, 850541, tzinfo=<UTC>), 'upd
+ated_at': datetime.datetime(2021, 2, 7, 0, 9, 29, 940978, tzinfo=<UTC>)}]>
+>>> exit()
+
+(DjPy3PSQL) C:\Development\Coding_Dojo\Tasks\python_stack\django\django_orm\book_authors_proj>

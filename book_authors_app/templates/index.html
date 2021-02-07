@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container-fluid text-center p-5">
+        <h1 class="display-1">Books and Authors App</h1>
+        <p class="lead display-3">Select your choice...</p>
+        <div class="container mt-5 pt-5 mx-auto">
+            <a role="button" class="btn btn-primary" href="/books">Add Book</a>
+            <a role="button" class="btn btn-success" href="/authors">Add Author</a>
+        </div>
+    </div>
+
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>
